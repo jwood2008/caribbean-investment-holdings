@@ -75,7 +75,7 @@ export function HeroSlideshow({ variant = "full" }: Props) {
             className="absolute inset-0 pointer-events-none"
             style={{
               background:
-                "linear-gradient(90deg, rgba(10,10,10,0.55) 0%, rgba(10,10,10,0.08) 18%, rgba(10,10,10,0) 50%, rgba(10,10,10,0.08) 82%, rgba(10,10,10,0.35) 100%)",
+                "linear-gradient(90deg, rgba(10,10,10,0) 0%, rgba(10,10,10,0) 55%, rgba(10,10,10,0.06) 80%, rgba(10,10,10,0.25) 100%)",
             }}
           />
           <div
