@@ -5,6 +5,7 @@
   --color-foreground: var(--foreground);
   --color-ink: var(--ink);
   --color-ink-foreground: var(--ink-foreground);
+  --color-ink-soft: var(--ink-soft);
   --color-paper: var(--paper);
   --color-paper-foreground: var(--paper-foreground);
   --color-rule: var(--rule);
@@ -12,42 +13,48 @@
   --color-muted: var(--muted);
   --color-muted-foreground: var(--muted-foreground);
   --color-accent: var(--accent);
+  --color-accent-bright: var(--accent-bright);
   --color-accent-foreground: var(--accent-foreground);
 
   --font-sans: var(--font-inter);
   --font-display: var(--font-fraunces);
+  --font-mono: var(--font-plex-mono);
 
   --tracking-tight: -0.02em;
   --tracking-tighter: -0.035em;
   --tracking-wide: 0.04em;
   --tracking-wider: 0.12em;
   --tracking-widest: 0.22em;
+
+  --ease-out: cubic-bezier(0.16, 1, 0.3, 1);
 }
 
 :root {
-  /* Paper (white sections) */
-  --paper: #ffffff;
-  --paper-foreground: #0a0a0a;
+  /* Paper (light sections) — cool off-white, tokenized-finance register */
+  --paper: #f4f7fb;
+  --paper-foreground: #0a1626;
 
-  /* Ink (black sections) */
-  --ink: #0a0a0a;
-  --ink-foreground: #f5f4f0;
+  /* Ink (deep navy sections) */
+  --ink: #0a1626;
+  --ink-soft: #0f2034;
+  --ink-foreground: #e9eef6;
 
   /* Default body */
   --background: var(--paper);
   --foreground: var(--paper-foreground);
 
   /* Rules / borders */
-  --rule: rgba(10, 10, 10, 0.10);
-  --rule-strong: rgba(10, 10, 10, 0.22);
+  --rule: rgba(10, 22, 38, 0.10);
+  --rule-strong: rgba(10, 22, 38, 0.20);
 
   /* Muted text on paper */
-  --muted: #f3f2ee;
-  --muted-foreground: #5a5752;
+  --muted: #e7edf5;
+  --muted-foreground: #51617a;
 
-  /* Warm gold accent — Blackstone signature */
-  --accent: #b9975b;
-  --accent-foreground: #0a0a0a;
+  /* Steel-azure accent — "tokenized Wall Street" */
+  --accent: #2f6fd6;
+  --accent-bright: #6aa8ef; /* legible accent on navy surfaces */
+  --accent-foreground: #ffffff;
 }
 
 * {
@@ -76,9 +83,9 @@ body {
 .section-ink {
   background: var(--ink);
   color: var(--ink-foreground);
-  --rule: rgba(245, 244, 240, 0.10);
-  --rule-strong: rgba(245, 244, 240, 0.25);
-  --muted-foreground: rgba(245, 244, 240, 0.62);
+  --rule: rgba(233, 238, 246, 0.10);
+  --rule-strong: rgba(233, 238, 246, 0.22);
+  --muted-foreground: rgba(233, 238, 246, 0.60);
 }
 
 .section-paper {
@@ -86,14 +93,31 @@ body {
   color: var(--paper-foreground);
 }
 
-/* Editorial eyebrow */
+/* Subtle blueprint grid for navy surfaces — institutional fintech texture */
+.grid-texture {
+  background-image:
+    linear-gradient(rgba(106, 168, 239, 0.06) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(106, 168, 239, 0.06) 1px, transparent 1px);
+  background-size: 64px 64px;
+}
+
+/* Editorial / technical eyebrow — now monospaced for the "ledger" feel */
 .eyebrow {
-  font-family: var(--font-sans);
+  font-family: var(--font-mono), ui-monospace, monospace;
   font-size: 11px;
   font-weight: 500;
-  letter-spacing: var(--tracking-widest);
+  letter-spacing: var(--tracking-wider);
   text-transform: uppercase;
   color: var(--accent);
+}
+.section-ink .eyebrow {
+  color: var(--accent-bright);
+}
+
+/* Monospace data/labels */
+.mono {
+  font-family: var(--font-mono), ui-monospace, monospace;
+  font-variant-numeric: tabular-nums;
 }
 
 /* Display headings */
@@ -120,6 +144,42 @@ body {
   opacity: 0.18;
 }
 
+/* Pill button base — sleek, with steel glow on hover */
+.btn-pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.6rem;
+  border-radius: 999px;
+  padding: 0.85rem 1.6rem;
+  font-size: 13px;
+  font-weight: 500;
+  letter-spacing: 0.01em;
+  text-decoration: none;
+  transition: background 0.3s var(--ease-out), color 0.3s var(--ease-out),
+    border-color 0.3s var(--ease-out), transform 0.3s var(--ease-out),
+    box-shadow 0.3s var(--ease-out);
+}
+.btn-pill:hover {
+  transform: translateY(-2px);
+}
+.btn-solid {
+  background: var(--accent);
+  color: var(--accent-foreground);
+  border: 1px solid var(--accent);
+}
+.btn-solid:hover {
+  box-shadow: 0 12px 34px -10px rgba(47, 111, 214, 0.55);
+}
+.btn-ghost {
+  background: transparent;
+  border: 1px solid var(--rule-strong);
+  color: inherit;
+}
+.btn-ghost:hover {
+  border-color: var(--accent);
+  color: var(--accent-bright);
+}
+
 /* Custom tooltip — per global rule, use data-tooltip not title */
 [data-tooltip] {
   position: relative;
@@ -134,12 +194,12 @@ body {
   background: var(--ink);
   color: var(--ink-foreground);
   padding: 6px 10px;
-  border-radius: 4px;
+  border-radius: 6px;
   font-size: 12px;
   white-space: nowrap;
   pointer-events: none;
-  z-index: 50;
-  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.18);
+  z-index: 60;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.28);
 }
 .section-ink [data-tooltip]:hover::after,
 .section-ink [data-tooltip]:focus-visible::after {
@@ -153,14 +213,72 @@ body {
   to { opacity: 1; transform: translateY(0); }
 }
 .fade-up {
-  animation: fade-up 0.8s cubic-bezier(0.2, 0.7, 0.2, 1) both;
+  animation: fade-up 0.8s var(--ease-out) both;
 }
 
-/* Marquee for portfolio tickers */
+/* Hero headline — each line slides up from a clipped mask */
+.hero-line {
+  display: block;
+  overflow: hidden;
+}
+.hero-line > span {
+  display: block;
+  transform: translateY(110%);
+  animation: hero-rise 1.1s var(--ease-out) forwards;
+}
+.hero-line:nth-child(1) > span { animation-delay: 0.15s; }
+.hero-line:nth-child(2) > span { animation-delay: 0.42s; }
+.hero-line:nth-child(3) > span { animation-delay: 0.69s; }
+@keyframes hero-rise {
+  to { transform: translateY(0); }
+}
+
+/* Reveal-on-scroll (toggled by IntersectionObserver) */
+.reveal {
+  opacity: 0;
+  transform: translateY(28px);
+  transition: opacity 0.85s var(--ease-out), transform 0.85s var(--ease-out);
+  will-change: opacity, transform;
+}
+.reveal.in {
+  opacity: 1;
+  transform: none;
+}
+.reveal.d1 { transition-delay: 0.08s; }
+.reveal.d2 { transition-delay: 0.16s; }
+.reveal.d3 { transition-delay: 0.24s; }
+.reveal.d4 { transition-delay: 0.32s; }
+
+/* Scroll-stack deck — cards pin under the nav and stack as you scroll */
+.stack-card {
+  position: sticky;
+  top: calc(96px + var(--i, 0) * 18px);
+}
+
+/* Slider: hide scrollbar but keep scroll-snap */
+.no-scrollbar {
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+}
+.no-scrollbar::-webkit-scrollbar {
+  display: none;
+}
+
+/* Marquee */
 @keyframes marquee {
   from { transform: translateX(0); }
   to { transform: translateX(-50%); }
 }
 .marquee-track {
   animation: marquee 38s linear infinite;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  .fade-up,
+  .hero-line > span,
+  .marquee-track { animation: none !important; }
+  .hero-line > span { transform: none; }
+  .reveal { opacity: 1; transform: none; transition: none; }
+  .stack-card { position: static; }
 }

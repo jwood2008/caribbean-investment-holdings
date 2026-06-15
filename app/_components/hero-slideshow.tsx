@@ -75,14 +75,14 @@ export function HeroSlideshow({ variant = "full" }: Props) {
             className="absolute inset-0 pointer-events-none"
             style={{
               background:
-                "linear-gradient(90deg, rgba(10,10,10,0) 0%, rgba(10,10,10,0) 55%, rgba(10,10,10,0.06) 80%, rgba(10,10,10,0.25) 100%)",
+                "linear-gradient(90deg, rgba(10,22,38,0) 0%, rgba(10,22,38,0) 55%, rgba(10,22,38,0.06) 80%, rgba(10,22,38,0.25) 100%)",
             }}
           />
           <div
             className="absolute inset-0 pointer-events-none"
             style={{
               background:
-                "linear-gradient(180deg, rgba(10,10,10,0.25) 0%, rgba(10,10,10,0) 25%, rgba(10,10,10,0) 75%, rgba(10,10,10,0.35) 100%)",
+                "linear-gradient(180deg, rgba(10,22,38,0.25) 0%, rgba(10,22,38,0) 25%, rgba(10,22,38,0) 75%, rgba(10,22,38,0.35) 100%)",
             }}
           />
         </>
@@ -92,14 +92,14 @@ export function HeroSlideshow({ variant = "full" }: Props) {
             className="absolute inset-0"
             style={{
               background:
-                "linear-gradient(180deg, rgba(10,10,10,0.78) 0%, rgba(10,10,10,0.55) 35%, rgba(10,10,10,0.65) 70%, rgba(10,10,10,0.92) 100%)",
+                "linear-gradient(180deg, rgba(10,22,38,0.78) 0%, rgba(10,22,38,0.55) 35%, rgba(10,22,38,0.65) 70%, rgba(10,22,38,0.92) 100%)",
             }}
           />
           <div
             className="absolute inset-0"
             style={{
               background:
-                "radial-gradient(ellipse at 20% 30%, rgba(10,10,10,0.0) 0%, rgba(10,10,10,0.45) 70%)",
+                "radial-gradient(ellipse at 20% 30%, rgba(10,22,38,0.0) 0%, rgba(10,22,38,0.45) 70%)",
             }}
           />
         </>

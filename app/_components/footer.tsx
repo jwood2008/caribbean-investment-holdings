@@ -1,7 +1,7 @@
 export function Footer() {
   const year = new Date().getFullYear();
   return (
-    <footer className="section-ink border-t border-[color:var(--rule)]">
+    <footer className="section-ink border-t border-[color:var(--accent)]/30">
       <div className="mx-auto max-w-[1400px] px-6 md:px-10 py-16 md:py-20">
         <div className="grid md:grid-cols-[2fr_1fr_1fr_1fr] gap-10">
           <div>
@@ -18,17 +18,17 @@ export function Footer() {
             <div className="eyebrow text-ink-foreground/40">Company</div>
             <ul className="mt-4 space-y-3 text-[14px] text-ink-foreground/70">
               <li>
-                <a href="#approach" className="hover:text-accent">
+                <a href="#approach" className="hover:text-accent-bright">
                   Approach
                 </a>
               </li>
               <li>
-                <a href="#portfolio" className="hover:text-accent">
+                <a href="#portfolio" className="hover:text-accent-bright">
                   Portfolio
                 </a>
               </li>
               <li>
-                <a href="#leadership" className="hover:text-accent">
+                <a href="#leadership" className="hover:text-accent-bright">
                   Leadership
                 </a>
               </li>
@@ -43,7 +43,7 @@ export function Footer() {
                   href="https://tierradex.com"
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="hover:text-accent"
+                  className="hover:text-accent-bright"
                 >
                   TierraDex ↗
                 </a>
@@ -53,13 +53,13 @@ export function Footer() {
                   href="https://conceptiongrenada.com"
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="hover:text-accent"
+                  className="hover:text-accent-bright"
                 >
                   Conception Grenada ↗
                 </a>
               </li>
               <li>
-                <a href="#contact" className="hover:text-accent">
+                <a href="#contact" className="hover:text-accent-bright">
                   Investor relations
                 </a>
               </li>
@@ -72,7 +72,7 @@ export function Footer() {
               <li>
                 <a
                   href="mailto:investors@caribbeaninvestmentholdings.com"
-                  className="hover:text-accent break-all"
+                  className="hover:text-accent-bright break-all"
                 >
                   investors@cih.com
                 </a>

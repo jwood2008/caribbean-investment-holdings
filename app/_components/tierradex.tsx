@@ -1,33 +1,39 @@
+import { Reveal } from "./reveal";
+
 export function TierraDex() {
   return (
     <section
       id="tierradex"
-      className="section-paper py-24 md:py-36 border-y border-[color:var(--rule)]"
+      className="section-paper py-24 md:py-32 border-y border-[color:var(--rule)]"
     >
-      <div className="mx-auto max-w-[1400px] px-6 md:px-10">
+      <div className="mx-auto max-w-[1200px] px-6 md:px-10">
         <div className="grid lg:grid-cols-[1fr_1.4fr] gap-12 lg:gap-20 items-start">
-          <div>
+          <Reveal>
             <div className="flex items-center gap-3">
-              <span className="h-px w-10 bg-paper-foreground/30" />
-              <span className="eyebrow text-paper-foreground/50">
-                Capital partner
-              </span>
+              <span className="h-px w-10 bg-accent" />
+              <span className="eyebrow">Capital partner</span>
             </div>
             <h2 className="display mt-8 text-[40px] md:text-[60px] leading-[0.98]">
               Tokenization,
               <br />
-              <span className="italic">handled.</span>
+              <span className="italic text-accent">handled.</span>
             </h2>
-          </div>
+            <div className="mt-9 inline-flex items-center gap-3 rounded-full border border-[color:var(--rule)] bg-[color:var(--muted)] px-4 py-2">
+              <span className="h-2 w-2 rounded-full bg-accent" />
+              <span className="mono text-[11px] uppercase tracking-wider text-paper-foreground/70">
+                Settled on the XRP Ledger
+              </span>
+            </div>
+          </Reveal>
 
-          <div className="space-y-8">
+          <Reveal delay={1} className="space-y-8">
             <p className="text-[17px] md:text-[19px] leading-[1.6] text-paper-foreground/85 max-w-[60ch]">
               Caribbean Investment Holdings raises capital through{" "}
               <a
                 href="https://tierradex.com"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="text-paper-foreground underline decoration-accent decoration-2 underline-offset-4 hover:text-accent"
+                className="text-paper-foreground underline decoration-accent decoration-2 underline-offset-4 hover:text-accent transition-colors"
               >
                 TierraDex
               </a>
@@ -59,14 +65,14 @@ export function TierraDex() {
                 href="https://tierradex.com"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="inline-flex items-center gap-3 bg-ink text-ink-foreground px-6 py-3.5 text-[13px] font-medium tracking-wide hover:bg-accent hover:text-accent-foreground transition-colors"
+                className="btn-pill btn-solid"
               >
                 Go to TierraDex
                 <span aria-hidden>↗</span>
               </a>
               <a
                 href="#contact"
-                className="inline-flex items-center gap-3 text-paper-foreground px-6 py-3.5 text-[13px] font-medium tracking-wide hover:text-accent transition-colors"
+                className="btn-pill btn-ghost"
               >
                 Speak with us first
                 <span aria-hidden>→</span>
@@ -79,7 +85,7 @@ export function TierraDex() {
               site constitutes an offer to sell or a solicitation to buy
               securities.
             </p>
-          </div>
+          </Reveal>
         </div>
       </div>
     </section>

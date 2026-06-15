@@ -15,115 +15,114 @@ export function SiteNav() {
   const [open, setOpen] = useState(false);
 
   useEffect(() => {
-    const onScroll = () => setScrolled(window.scrollY > 12);
+    const onScroll = () => setScrolled(window.scrollY > 16);
     onScroll();
     window.addEventListener("scroll", onScroll, { passive: true });
     return () => window.removeEventListener("scroll", onScroll);
   }, []);
 
-  // When unscrolled, the nav floats over the dark hero — use cream/ink-foreground text.
-  // When scrolled, the nav has a white backdrop — switch to ink (black) text.
-  const textClass = scrolled ? "text-paper-foreground" : "text-ink-foreground";
-  const linkClass = scrolled
-    ? "text-paper-foreground/70 hover:text-paper-foreground"
-    : "text-ink-foreground/80 hover:text-ink-foreground";
-  const hamburgerClass = scrolled ? "bg-paper-foreground" : "bg-ink-foreground";
-
   return (
-    <header
-      className={`fixed inset-x-0 top-0 z-40 transition-all duration-300 ${
-        scrolled
-          ? "bg-paper/85 backdrop-blur-md border-b border-[color:var(--rule)]"
-          : "bg-transparent"
-      }`}
-    >
-      <div className="mx-auto max-w-[1400px] px-6 md:px-10">
-        <div className="flex h-[72px] items-center justify-between">
-          <a href="#top" className="flex items-baseline gap-2 group">
-            <span
-              className={`display-sm text-xl md:text-2xl tracking-tight transition-colors ${textClass}`}
-            >
-              Caribbean Investment Holdings
-            </span>
-          </a>
-
-          <nav className="hidden md:flex items-center gap-9">
-            {links.map((l) => (
-              <a
-                key={l.href}
-                href={l.href}
-                className={`text-[13px] font-medium transition-colors ${linkClass}`}
+    <header className="fixed inset-x-0 top-0 z-50 pointer-events-none">
+      <div className="mx-auto w-[min(100%-1.5rem,1180px)] mt-3 md:mt-4 pointer-events-auto">
+        <div
+          className={`rounded-full border transition-all duration-400 ${
+            scrolled
+              ? "border-[rgba(233,238,246,0.12)] bg-[rgba(10,22,38,0.72)] backdrop-blur-xl shadow-[0_18px_50px_-24px_rgba(0,0,0,0.7)]"
+              : "border-transparent bg-transparent"
+          }`}
+        >
+          <div className="flex h-[60px] items-center justify-between gap-4 pl-5 pr-2 md:pl-7 md:pr-3">
+            {/* Wordmark */}
+            <a href="#top" className="flex items-center gap-2.5 shrink-0">
+              <span
+                aria-hidden
+                className="grid h-7 w-7 place-items-center rounded-full border border-[color:var(--accent-bright)]/50 text-[11px] font-medium text-accent-bright mono"
               >
-                {l.label}
-              </a>
-            ))}
-          </nav>
-
-          <div className="hidden md:block">
-            <a
-              href="https://tierradex.com"
-              target="_blank"
-              rel="noopener noreferrer"
-              className={`inline-flex items-center gap-2 px-5 py-2.5 text-[13px] font-medium tracking-wide transition-colors ${
-                scrolled
-                  ? "bg-ink text-ink-foreground hover:bg-accent hover:text-accent-foreground"
-                  : "bg-paper text-paper-foreground hover:bg-accent hover:text-accent-foreground"
-              }`}
-              data-tooltip="Open TierraDex — our tokenization partner where accredited investors subscribe"
-            >
-              Invest via TierraDex
-              <span aria-hidden>→</span>
+                CIH
+              </span>
+              <span className="hidden sm:block text-[13px] font-medium tracking-tight text-ink-foreground/90">
+                Caribbean Investment Holdings
+              </span>
             </a>
-          </div>
 
-          <button
-            type="button"
-            aria-label="Toggle menu"
-            className="md:hidden inline-flex flex-col gap-1.5"
-            onClick={() => setOpen((v) => !v)}
-          >
-            <span
-              className={`block h-[1.5px] w-6 transition-all ${hamburgerClass} ${
-                open ? "translate-y-[7px] rotate-45" : ""
-              }`}
-            />
-            <span
-              className={`block h-[1.5px] w-6 transition-all ${hamburgerClass} ${
-                open ? "opacity-0" : ""
-              }`}
-            />
-            <span
-              className={`block h-[1.5px] w-6 transition-all ${hamburgerClass} ${
-                open ? "-translate-y-[7px] -rotate-45" : ""
-              }`}
-            />
-          </button>
-        </div>
-
-        {open && (
-          <div className="md:hidden pb-6 border-t border-[color:var(--rule)] -mx-6 px-6 pt-6 bg-paper">
-            <nav className="flex flex-col gap-4">
+            {/* Links */}
+            <nav className="hidden lg:flex items-center gap-7">
               {links.map((l) => (
                 <a
                   key={l.href}
                   href={l.href}
-                  onClick={() => setOpen(false)}
-                  className="text-sm font-medium text-paper-foreground/80"
+                  className="text-[12.5px] font-medium text-ink-foreground/65 hover:text-ink-foreground transition-colors"
                 >
                   {l.label}
                 </a>
               ))}
+            </nav>
+
+            {/* CTA */}
+            <div className="hidden md:block">
               <a
                 href="https://tierradex.com"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="mt-2 inline-flex items-center justify-center bg-ink text-ink-foreground px-5 py-3 text-sm font-medium"
+                className="btn-pill btn-solid !py-2.5 !px-5 !text-[12.5px]"
+                data-tooltip="Open TierraDex — accredited investors subscribe via our tokenization partner"
               >
-                Invest via TierraDex →
+                Invest via TierraDex
+                <span aria-hidden>→</span>
               </a>
-            </nav>
+            </div>
+
+            {/* Mobile toggle */}
+            <button
+              type="button"
+              aria-label="Toggle menu"
+              className="md:hidden inline-flex flex-col gap-1.5 p-2"
+              onClick={() => setOpen((v) => !v)}
+            >
+              <span
+                className={`block h-[1.5px] w-6 bg-ink-foreground transition-all ${
+                  open ? "translate-y-[7px] rotate-45" : ""
+                }`}
+              />
+              <span
+                className={`block h-[1.5px] w-6 bg-ink-foreground transition-all ${
+                  open ? "opacity-0" : ""
+                }`}
+              />
+              <span
+                className={`block h-[1.5px] w-6 bg-ink-foreground transition-all ${
+                  open ? "-translate-y-[7px] -rotate-45" : ""
+                }`}
+              />
+            </button>
           </div>
-        )}
+
+          {/* Mobile menu */}
+          {open && (
+            <div className="md:hidden mx-2 mb-2 rounded-2xl border border-[rgba(233,238,246,0.12)] bg-[rgba(10,22,38,0.95)] backdrop-blur-xl px-5 py-5">
+              <nav className="flex flex-col gap-4">
+                {links.map((l) => (
+                  <a
+                    key={l.href}
+                    href={l.href}
+                    onClick={() => setOpen(false)}
+                    className="text-sm font-medium text-ink-foreground/80"
+                  >
+                    {l.label}
+                  </a>
+                ))}
+                <a
+                  href="https://tierradex.com"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="btn-pill btn-solid justify-center mt-2"
+                >
+                  Invest via TierraDex →
+                </a>
+              </nav>
+            </div>
+          )}
+        </div>
       </div>
     </header>
   );
