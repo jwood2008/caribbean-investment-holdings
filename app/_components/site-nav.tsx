@@ -33,13 +33,34 @@ export function SiteNav() {
         >
           <div className="flex h-[60px] items-center justify-between gap-4 pl-5 pr-2 md:pl-7 md:pr-3">
             {/* Wordmark */}
-            <a href="#top" className="flex items-center gap-2.5 shrink-0">
-              <span
+            <a href="#top" className="flex items-center gap-2.5 shrink-0 text-accent-bright">
+              <svg
                 aria-hidden
-                className="grid h-7 w-7 place-items-center rounded-full border border-[color:var(--accent-bright)]/50 text-[11px] font-medium text-accent-bright mono"
+                viewBox="0 0 48 48"
+                className="h-8 w-8 shrink-0"
+                fill="none"
               >
-                CIH
-              </span>
+                <circle
+                  cx="24"
+                  cy="24"
+                  r="21"
+                  stroke="currentColor"
+                  strokeWidth="1.25"
+                  opacity="0.5"
+                />
+                <text
+                  x="23"
+                  y="24"
+                  textAnchor="middle"
+                  dominantBaseline="central"
+                  fontFamily="Georgia, 'Times New Roman', serif"
+                  fontSize="26"
+                  fill="currentColor"
+                >
+                  C
+                </text>
+                <circle cx="34.5" cy="24" r="2.1" fill="currentColor" />
+              </svg>
               <span className="hidden sm:block text-[13px] font-medium tracking-tight text-ink-foreground/90">
                 Caribbean Investment Holdings
               </span>
